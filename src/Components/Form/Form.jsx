@@ -9,21 +9,26 @@ function Form() {
 
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState ("")
-
+const [confirmpd, setConfirmPd] = useState ("")
+const [validPwdConfirm, setValidPwdConfirm] = useState(false);
+ 
 
 const [_, setUser] = useAtom (userAtom)
 
+
+
+
 const handleSubmit = async (e) => {
   e.preventDefault();
- 
-
+  
+  if (password === confirmpd) {
   const data = {
     user: {
         email: email,
-        password: password
+        password: password,
     }
+  }
 }
-
   try {
     const response = await APIManager.register(data);
     setUser(response.data.user)
@@ -37,7 +42,7 @@ console.error(err)
 
   return (
     <>
-    <h1 className="title-form">Sign Up</h1>
+    <h1 className="title-form">Register</h1>
     <form onSubmit={handleSubmit} className="container-form">
       <label htmlFor="email">Email </label>
       <input
@@ -45,7 +50,7 @@ console.error(err)
         value={email}
         type="text"
         id="email"
-        placeholder="Email"
+        placeholder="email"
         />
        
       <label htmlFor="password">Password</label>
@@ -58,6 +63,15 @@ console.error(err)
         placeholder="password"
         />
  
+      <label htmlFor="password">Confirm password</label>
+      
+      <input
+        onChange={(e) => setConfirmPd(e.target.value)}
+        value={confirmpd}
+        type="text"
+        id="password"
+        placeholder="password"
+        />
        
     
       <button>Sign Up</button>

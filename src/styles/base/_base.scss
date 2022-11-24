@@ -92,3 +92,26 @@ nav {
   border-radius: 3px;
   cursor: pointer;
 }
+
+
+.btn-deconect {
+  margin-left:20rem;
+  border: solid 0.1rem;
+  border-radius: 2rem;
+  background-color: rgb(59, 110, 189);
+  color: white;
+  cursor: pointer;
+}
+
+
+
+.card-art {
+  width: 400px; /*1*/
+  background-color: white; /*3*/
+  box-shadow: 0px 5px 20px #999; /*4*/
+  display: block;
+  margin-top: 3%;
+  border-radius: 0.5rem;
+}
+
+
