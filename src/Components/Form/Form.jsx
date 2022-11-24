@@ -10,7 +10,7 @@ function Form() {
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState ("")
 const [confirmpd, setConfirmPd] = useState ("")
-const [validPwdConfirm, setValidPwdConfirm] = useState(false);
+
  
 
 const [_, setUser] = useAtom (userAtom)
@@ -21,14 +21,14 @@ const [_, setUser] = useAtom (userAtom)
 const handleSubmit = async (e) => {
   e.preventDefault();
   
-  if (password === confirmpd) {
+
   const data = {
     user: {
         email: email,
         password: password,
-    }
-  }
+      }
 }
+  if (password === confirmpd) {
   try {
     const response = await APIManager.register(data);
     setUser(response.data.user)
@@ -36,10 +36,11 @@ const handleSubmit = async (e) => {
   } catch(err) {
 console.error(err)
   }
-  
+} else { 
+  return  <div> Password do not match </div>
 
 }
-
+}
   return (
     <>
     <h1 className="title-form">Register</h1>
@@ -80,4 +81,4 @@ console.error(err)
   )
 }
 
-export default Form
+export default Form;
